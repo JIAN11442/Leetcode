@@ -8,36 +8,6 @@
 // Output: [7,0,8]
 // Explanation: 342 + 465 = 807.
 
-// const addTwoNumbers = (l1, l2) => {
-//   let output = [];
-//   let result = 0;
-//   let decimal = 0;
-//   for (let i = 0; i < l1.length; i++) {
-//     if (l2[i] !== undefined) {
-//       if (l1[i] + l2[i] + decimal >= 10) {
-//         result = l1[i] + l2[i] + decimal - 10;
-//         decimal = 1;
-//       } else {
-//         result = l1[i] + l2[i] + decimal;
-//         decimal = 0;
-//       }
-//     } else {
-//       if (l1[i] + decimal >= 10) {
-//         result = l1[i] + decimal - 10;
-//         decimal = 1;
-//       } else {
-//         result = l1[i] + decimal;
-//         decimal = 0;
-//       }
-//     }
-//     output.push(result);
-//   }
-//   if (decimal !== 0) {
-//     output.push(1);
-//   }
-//   return output;
-// };
-
 class ListNode {
   constructor(val, next = null) {
     this.val = val;
@@ -79,6 +49,7 @@ const addTwoNumbers = (l1, l2) => {
     list.next = list.next.next;
   }
   console.log(result);
+  return list.next;
 };
 
 const l1 = new ListNode(
@@ -94,3 +65,33 @@ const l1 = new ListNode(
 const l2 = new ListNode(9, new ListNode(9, new ListNode(9, new ListNode(9))));
 
 addTwoNumbers(l1, l2);
+
+// const addTwoNumbers = (l1, l2) => {
+//   let output = [];
+//   let result = 0;
+//   let decimal = 0;
+//   for (let i = 0; i < l1.length; i++) {
+//     if (l2[i] !== undefined) {
+//       if (l1[i] + l2[i] + decimal >= 10) {
+//         result = l1[i] + l2[i] + decimal - 10;
+//         decimal = 1;
+//       } else {
+//         result = l1[i] + l2[i] + decimal;
+//         decimal = 0;
+//       }
+//     } else {
+//       if (l1[i] + decimal >= 10) {
+//         result = l1[i] + decimal - 10;
+//         decimal = 1;
+//       } else {
+//         result = l1[i] + decimal;
+//         decimal = 0;
+//       }
+//     }
+//     output.push(result);
+//   }
+//   if (decimal !== 0) {
+//     output.push(1);
+//   }
+//   return output;
+// };
