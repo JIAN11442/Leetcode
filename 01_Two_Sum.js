@@ -7,15 +7,33 @@
 
 // Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
+// --------------------------------------------------------------------
 
 const twoSum = (nums, target) => {
+  let map = {};
   for (let i = 0; i < nums.length; i++) {
-    for (let j = 0; j < nums.length; j++) {
-      if (nums[i] + nums[j] == target) {
-        console.log(`nums[i]:${nums[i]}, nums[j]:${nums[j]}`);
-      }
+    const minusValue = target - nums[i];
+    if (minusValue in map) {
+      console.log([i, map[minusValue]]);
+      //   return [i, map[minusValue]];
     }
+    map[nums[i]] = i;
+  }
+  if (Object.entries(map).length === nums.length) {
+    console.log("None available solution");
   }
 };
 
-twoSum([1, 2, 3, 4], 5);
+twoSum([2, 7, 11, 15], 9);
+
+// [SOLUTION 1]
+// for (let i = 0; i < nums.length; i++) {
+//     const minusValue = target - nums[i];
+//     const mValueIndex = nums.findIndex((num) => num === minusValue);
+//     if (mValueIndex !== -1 && mValueIndex !== i) {
+//       console.log(
+//         `nums[${i}]:${nums[i]},nums[${mValueIndex}]:${nums[mValueIndex]}`
+//       );
+//       return [i, mValueIndex];
+//     }
+//   }
