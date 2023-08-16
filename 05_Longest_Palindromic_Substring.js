@@ -22,7 +22,11 @@
 // babadb = bab
 
 const longestPalindrome = (s) => {
-  console.log(0 > 0);
+  for (let i = 0; i < s.length; i++) {
+    for (let j of [0, 1]) {
+      console.log(i, j);
+    }
+  }
 };
 
 // longestPalindrome("a");
