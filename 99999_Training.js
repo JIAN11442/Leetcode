@@ -1,8 +1,33 @@
+// #7
+
+const reverse = (x) => {};
+
+reverse(123);
+
 // #6
 
-const convert = (s, numRows) => {};
+// const convert = (s, numRows) => {
+//   let count = 0;
+//   let direction = false;
+//   let array = new Array(numRows).fill("");
 
-convert("PAYPALISHIRING", 3);
+//   if (numRows === 1 || s.length < numRows) {
+//     console.log(s);
+//     return s;
+//   }
+
+//   for (let i = 0; i < s.length; i++) {
+//     array[count] += s[i];
+//     if (count === numRows - 1 || count === 0) {
+//       direction = !direction;
+//     }
+//     direction ? count++ : count--;
+//   }
+//   console.log(array.join(""));
+//   return array.join("");
+// };
+
+// convert("ABC", 1);
 
 // #5
 
