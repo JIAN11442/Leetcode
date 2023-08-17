@@ -1,10 +1,35 @@
+// #6
+
+const convert = (s, numRows) => {};
+
+convert("PAYPALISHIRING", 3);
+
 // #5
 
-const longestPalindrome = (s) => {
-  for (let i = 0; i < s.length; i++) {}
-};
+// const longestPalindrome = (s) => {
+//   let maxStr = "";
+//   for (let i = 0; i < s.length; i++) {
+//     for (let j of [0, 1]) {
+//       let left = i;
+//       let right = i + j;
+//       // let times = 0;
+//       while (left >= 0 && s[left] === s[right]) {
+//         // times++;
+//         left--;
+//         right++;
+//       }
+//       // console.log(i, j, times, left, right, s.substring(left + 1, right));
+//       let value = s.substring(left + 1, right);
+//       if (value.length > maxStr.length) {
+//         maxStr = value;
+//       }
+//     }
+//   }
+//   console.log(maxStr);
+//   return maxStr;
+// };
 
-longestPalindrome("babad");
+// longestPalindrome("babbab");
 
 // #4
 
