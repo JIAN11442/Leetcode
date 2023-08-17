@@ -36,9 +36,25 @@
 // 1 <= numRows <= 1000
 
 const convert = (s, numRows) => {
+  let index = 0;
+  let direction = false;
   let arr = new Array(numRows).fill("");
-  arr[1] += "a";
-  console.log(arr);
+
+  if (numRows === 1) {
+    console.log(s);
+    return s;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    arr[index] += s[i];
+    if (index <= 0 || index >= numRows - 1) {
+      direction = !direction;
+    }
+
+    direction ? index++ : index--;
+  }
+  console.log(arr.join(""));
+  return arr.join("");
 };
 
 convert("PAYPALISHIRING", 3);

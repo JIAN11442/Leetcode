@@ -22,21 +22,39 @@
 // babadb = bab
 
 const longestPalindrome = (s) => {
+  let maxStr = "";
   for (let i = 0; i < s.length; i++) {
     for (let j of [0, 1]) {
-      console.log(i, j);
+      let left = i;
+      let right = i + j;
+      // 如果s[left] === s[right],再往兩邊展開檢查，直到不一樣爲止（最後會得到最終不一樣的index）
+      while (left >= 0 && s[left] === s[right]) {
+        left--;
+        right++;
+      }
+      // 檢查到最後得到不一樣的index后，照理來説應該要取得最後再前一次的檢查的index才是最終的index
+      // 所以照理來説要的index range是 [left + 1, right-1]的範圍，
+      // 但因爲substring並不會從第一個參數的index截取到第二個參數的index，而是會截取第一個參數的index~第二個參數的index-1
+      // 所以我們可以第二個參數還是維持right，實際上substring會取到right-1
+      let currentPldStr = s.substring(left + 1, right);
+      // 如果得到的Str比maxStr長度還長，就取代maxStr，這樣最終就能得到最大的maxStr
+      if (currentPldStr.length > maxStr.length) {
+        maxStr = currentPldStr;
+      }
     }
   }
+  console.log(s, "->", maxStr);
+  return maxStr;
 };
 
-// longestPalindrome("a");
-// longestPalindrome("aa");
-// longestPalindrome("abc");
-// longestPalindrome("abcba");
-// longestPalindrome("ccc");
-// longestPalindrome("babadb");
-// longestPalindrome("bacabab");
-// longestPalindrome("abbcccbbbcaaccbababcbcabca");
+longestPalindrome("a");
+longestPalindrome("aa");
+longestPalindrome("abc");
+longestPalindrome("abcba");
+longestPalindrome("ccc");
+longestPalindrome("babadb");
+longestPalindrome("bacabab");
+longestPalindrome("abbcccbbbcaaccbababcbcabca");
 longestPalindrome("aacabdkacaa");
 
 // const longestPalindrome = (s) => {
