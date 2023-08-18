@@ -1,8 +1,88 @@
+// #8
+
+// const myAtoi = (s) => {
+//   let val = "";
+//   let result = 0;
+//   let lists = s.split(" ");
+//   let isNum = (str) => {
+//     let num = str.match(/-?\d+/);
+//     num === null ? null : num;
+//     return num;
+//   };
+
+//   console.log(lists);
+
+//   for (let i = 0; i < lists.length; i++) {
+//     if (lists[i] !== "" && isNum(lists[i]) === null) {
+//       break;
+//     }
+//     val += lists[i];
+
+//     if (val.length > 0) {
+//       break;
+//     }
+//   }
+//   result =
+//     isNaN(parseInt(val)) === false
+//       ? parseInt(val) > Math.pow(2, 31) - 1
+//         ? Math.pow(2, 31) - 1
+//         : parseInt(val) < Math.pow(2, 31) * -1
+//         ? Math.pow(2, 31) * -1
+//         : parseInt(val)
+//       : 0;
+
+//   console.log(result);
+//   return result;
+// };
+
+const myAtoi = (s) => {
+  let result = 0;
+  let MIN_32BIT_INTEGER = Math.pow(-2, 31);
+  let MAX_32BIT_INTEGER = Math.pow(2, 31) - 1;
+  // 正則表達式:
+  // '^' : 只抓第一個來match，符合的話就有值，否則就返回 null
+  // '-?' : 可選的負號（不強制）
+  // '[-\+]?' : 可選的正負號（不強制）
+  // '\d+' : 一個或多個數字字符
+  let isNum = s.trimLeft().match(/^[-\+]?\d+/);
+
+  if (isNum !== null) {
+    if (isNum[0] > MAX_32BIT_INTEGER) {
+      result = MAX_32BIT_INTEGER;
+    } else if (isNum[0] < MIN_32BIT_INTEGER) {
+      result = MIN_32BIT_INTEGER;
+    } else {
+      result = parseInt(isNum[0]);
+    }
+  }
+  console.log(result);
+  return result;
+};
+
+myAtoi(" .1");
+myAtoi(" +0 123");
+myAtoi("  -4193 with words ");
+myAtoi("  -41939874654 with words ");
+myAtoi("  41939874654 with words ");
+myAtoi(" as  41939874654 with words ");
+
 // #7
 
-const reverse = (x) => {};
+// const reverse = (x) => {
+//   let val = parseInt(Math.abs(x).toString().split("").reverse().join(""));
+//   val > Math.pow(2, 31) - 1 || val < Math.pow(2, 31) * -1
+//     ? (val = 0)
+//     : (val = val * Math.sign(x));
+//   console.log(x, "->", val);
+//   return val;
+// };
 
-reverse(123);
+// reverse(-120);
+// reverse(123);
+// reverse(-123);
+// reverse(5000000003);
+// reverse(-5000000003);
+// reverse(-500000003);
 
 // #6
 
