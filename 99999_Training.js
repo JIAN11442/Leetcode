@@ -1,3 +1,45 @@
+// #9
+
+// const isPalindrome = (x) => {
+//   let result =
+//     x.toString() === x.toString().split("").reverse().join("") ? true : false;
+
+//   console.log(x.toString(), x.toString().split("").reverse().join(""), result);
+//   return result;
+// };
+
+var isPalindrome = function (x) {
+  let reverse = 0;
+  let val = x;
+
+  while (val > 0) {
+    // 得到餘數（也就是得到最後一個數字 -> 因為是回文，所以也等於第一個數字）
+    let digit = val % 10;
+    // reverse*10 的用意是新增一個位數的空間，加上digit後，間接的換了位置
+    // 『x』 最後一個位置的數字成為『reverse』第一個位置的數字）
+    reverse = reverse * 10 + digit;
+    // 最後刪除『x』的最後位置的一個數字，並更新『x』，進入下一個迴圈判斷
+    // 『x / 10』 會得到除後的值（可能是整數、也可能是小數點）
+    // 『～～』是一種對數字進行 "double tilde" 運算的方式，也被稱為「雙補數運算」。這種操作會將數字的小數部分截斷，只保留整數部分。
+    // 因此『~~(x/10)』的結果就是取整數，忽略小數點，以這案例的含義來說就是去除原本『x』的最後一個數字
+    val = ~~(val / 10);
+  }
+
+  console.log(
+    "input:",
+    x,
+    "; reverse:",
+    reverse,
+    "; isPalindrome",
+    reverse == x
+  );
+  return reverse == x;
+};
+
+isPalindrome(121);
+isPalindrome(-121);
+isPalindrome(10);
+
 // #8
 
 // const myAtoi = (s) => {
@@ -35,36 +77,36 @@
 //   return result;
 // };
 
-const myAtoi = (s) => {
-  let result = 0;
-  let MIN_32BIT_INTEGER = Math.pow(-2, 31);
-  let MAX_32BIT_INTEGER = Math.pow(2, 31) - 1;
-  // 正則表達式:
-  // '^' : 只抓第一個來match，符合的話就有值，否則就返回 null
-  // '-?' : 可選的負號（不強制）
-  // '[-\+]?' : 可選的正負號（不強制）
-  // '\d+' : 一個或多個數字字符
-  let isNum = s.trimLeft().match(/^[-\+]?\d+/);
+// const myAtoi = (s) => {
+//   let result = 0;
+//   let MIN_32BIT_INTEGER = Math.pow(-2, 31);
+//   let MAX_32BIT_INTEGER = Math.pow(2, 31) - 1;
+//   // 正則表達式:
+//   // '^' : 只抓第一個來match，符合的話就有值，否則就返回 null
+//   // '-?' : 可選的負號（不強制）
+//   // '[-\+]?' : 可選的正負號（不強制）
+//   // '\d+' : 一個或多個數字字符
+//   let isNum = s.trimLeft().match(/^[-\+]?\d+/);
 
-  if (isNum !== null) {
-    if (isNum[0] > MAX_32BIT_INTEGER) {
-      result = MAX_32BIT_INTEGER;
-    } else if (isNum[0] < MIN_32BIT_INTEGER) {
-      result = MIN_32BIT_INTEGER;
-    } else {
-      result = parseInt(isNum[0]);
-    }
-  }
-  console.log(result);
-  return result;
-};
+//   if (isNum !== null) {
+//     if (isNum[0] > MAX_32BIT_INTEGER) {
+//       result = MAX_32BIT_INTEGER;
+//     } else if (isNum[0] < MIN_32BIT_INTEGER) {
+//       result = MIN_32BIT_INTEGER;
+//     } else {
+//       result = parseInt(isNum[0]);
+//     }
+//   }
+//   console.log(result);
+//   return result;
+// };
 
-myAtoi(" .1");
-myAtoi(" +0 123");
-myAtoi("  -4193 with words ");
-myAtoi("  -41939874654 with words ");
-myAtoi("  41939874654 with words ");
-myAtoi(" as  41939874654 with words ");
+// myAtoi(" .1");
+// myAtoi(" +0 123");
+// myAtoi("  -4193 with words ");
+// myAtoi("  -41939874654 with words ");
+// myAtoi("  41939874654 with words ");
+// myAtoi(" as  41939874654 with words ");
 
 // #7
 
