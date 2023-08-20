@@ -1,3 +1,42 @@
+// #10
+
+const isMatch = (s, p) => {
+  let result = "";
+
+  // 判斷p有沒有值，要是沒有就再看s有沒有值。
+  // 如果s也沒值，return true，因爲 s = ''，p = '' => MATCHES
+  // 反之，return false，因爲 s = '?'，p = '' => DON'T MATCHES
+
+  if (!p) {
+    result = !s;
+    return !s;
+  }
+
+  // 如果p有值，再看p[0]的值是不是'.'，或是與s[0]的值相等
+  // Boolean(s)能直接return回true/false，如果只是 s && ...的話，儅s=''，也會被當作'true'並執行後面的判斷
+  // 而且Boolea(s)能直接返回的話，就能判斷 true && true = true; true && false = false等判斷
+  let hasFirstCharMatch = Boolean(s) && (p[0] === "." || p[0] === s[0]);
+
+  // 如果p有值，且p[1] == '*'，有兩個選擇
+  // 第一個選擇是：無視或跳過【...?*】前的值（當作'*'是零次，相當於沒有前面的值），讓 p =【?*...】後面的值后，再投入isMatch(s,p) function裏遞歸(Recursive)
+  // 第二個選擇是：'*'是一次，且'*'前的值，也就是p[0] === '.'或 p[0] === s[0]，這樣的話可以當作s[0]成功過關，去除s[0]后剩下的只一樣再投入isMatch(s,p) function裏遞歸
+  // 需要注意的是：第一個選擇執行時，再次遞歸后也一定也執行第一選擇，也可能執行第二選擇，一切看當時候的參數【O1 ?=> O2 ?=> O1 ?=> O1....】
+  // 需要注意的是：儅第一個選擇執行到最後的結果是'true'時，就不會執行第二選擇（沒必要，因爲第一選擇開始的支綫已經跑完了所有s[i]，得出的答案是'true'）
+  if (p[1] === "*") {
+    return (
+      // isMatch(s, p.slice(2)) || (hasFirstCharMatch && isMatch(s.slice(1), p))
+      isMatch(s, p.slice(2)) ||
+      (hasFirstCharMatch && isMatch(s.slice(1), p.slice(1)))
+    );
+  }
+
+  return hasFirstCharMatch ? isMatch(s.slice(1), p.slice(1)) : false;
+};
+
+isMatch("", ".a");
+isMatch("aa", "a*");
+isMatch("aa", ".*");
+
 // #9
 
 // const isPalindrome = (x) => {
@@ -8,37 +47,37 @@
 //   return result;
 // };
 
-var isPalindrome = function (x) {
-  let reverse = 0;
-  let val = x;
+// var isPalindrome = function (x) {
+//   let reverse = 0;
+//   let val = x;
 
-  while (val > 0) {
-    // 得到餘數（也就是得到最後一個數字 -> 因為是回文，所以也等於第一個數字）
-    let digit = val % 10;
-    // reverse*10 的用意是新增一個位數的空間，加上digit後，間接的換了位置
-    // 『x』 最後一個位置的數字成為『reverse』第一個位置的數字）
-    reverse = reverse * 10 + digit;
-    // 最後刪除『x』的最後位置的一個數字，並更新『x』，進入下一個迴圈判斷
-    // 『x / 10』 會得到除後的值（可能是整數、也可能是小數點）
-    // 『～～』是一種對數字進行 "double tilde" 運算的方式，也被稱為「雙補數運算」。這種操作會將數字的小數部分截斷，只保留整數部分。
-    // 因此『~~(x/10)』的結果就是取整數，忽略小數點，以這案例的含義來說就是去除原本『x』的最後一個數字
-    val = ~~(val / 10);
-  }
+//   while (val > 0) {
+//     // 得到餘數（也就是得到最後一個數字 -> 因為是回文，所以也等於第一個數字）
+//     let digit = val % 10;
+//     // reverse*10 的用意是新增一個位數的空間，加上digit後，間接的換了位置
+//     // 『x』 最後一個位置的數字成為『reverse』第一個位置的數字）
+//     reverse = reverse * 10 + digit;
+//     // 最後刪除『x』的最後位置的一個數字，並更新『x』，進入下一個迴圈判斷
+//     // 『x / 10』 會得到除後的值（可能是整數、也可能是小數點）
+//     // 『～～』是一種對數字進行 "double tilde" 運算的方式，也被稱為「雙補數運算」。這種操作會將數字的小數部分截斷，只保留整數部分。
+//     // 因此『~~(x/10)』的結果就是取整數，忽略小數點，以這案例的含義來說就是去除原本『x』的最後一個數字
+//     val = ~~(val / 10);
+//   }
 
-  console.log(
-    "input:",
-    x,
-    "; reverse:",
-    reverse,
-    "; isPalindrome",
-    reverse == x
-  );
-  return reverse == x;
-};
+//   console.log(
+//     "input:",
+//     x,
+//     "; reverse:",
+//     reverse,
+//     "; isPalindrome",
+//     reverse == x
+//   );
+//   return reverse == x;
+// };
 
-isPalindrome(121);
-isPalindrome(-121);
-isPalindrome(10);
+// isPalindrome(121);
+// isPalindrome(-121);
+// isPalindrome(10);
 
 // #8
 
