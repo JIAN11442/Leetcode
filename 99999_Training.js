@@ -1,41 +1,83 @@
+// #53
+
+// const maxSubArray = (nums) => {
+//   let maxArray = 0;
+
+//   for (let i = 1; i < nums.length; i++) {
+//     nums[i] = Math.max(nums[i - 1] + nums[i], nums[i]);
+//     maxArray = Math.max(maxArray, nums[i]);
+//   }
+//   console.log(maxArray);
+//   return maxArray;
+// };
+
+// maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+
+// #12
+
+// #11
+
+// const maxArea = (height) => {
+//   let maxArea = 0;
+//   let i = 0;
+//   let j = height.length - 1;
+//   let prevHeight = 0;
+//   let prevWidth = 0;
+
+//   while (i < j) {
+//     let h = Math.min(height[i], height[j]);
+//     let w = j - i;
+
+//     if (h > prevHeight || w > prevWidth) {
+//       maxArea = Math.max(maxArea, h * w);
+//     }
+
+//     height[i] < height[j] ? i++ : j--;
+//   }
+//   console.log(maxArea);
+//   return maxArea;
+// };
+
+// maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
+
 // #10
 
-const isMatch = (s, p) => {
-  let result = "";
+// const isMatch = (s, p) => {
+//   let result = "";
 
-  // 判斷p有沒有值，要是沒有就再看s有沒有值。
-  // 如果s也沒值，return true，因爲 s = ''，p = '' => MATCHES
-  // 反之，return false，因爲 s = '?'，p = '' => DON'T MATCHES
+//   // 判斷p有沒有值，要是沒有就再看s有沒有值。
+//   // 如果s也沒值，return true，因爲 s = ''，p = '' => MATCHES
+//   // 反之，return false，因爲 s = '?'，p = '' => DON'T MATCHES
 
-  if (!p) {
-    result = !s;
-    return !s;
-  }
+//   if (!p) {
+//     result = !s;
+//     return !s;
+//   }
 
-  // 如果p有值，再看p[0]的值是不是'.'，或是與s[0]的值相等
-  // Boolean(s)能直接return回true/false，如果只是 s && ...的話，儅s=''，也會被當作'true'並執行後面的判斷
-  // 而且Boolea(s)能直接返回的話，就能判斷 true && true = true; true && false = false等判斷
-  let hasFirstCharMatch = Boolean(s) && (p[0] === "." || p[0] === s[0]);
+//   // 如果p有值，再看p[0]的值是不是'.'，或是與s[0]的值相等
+//   // Boolean(s)能直接return回true/false，如果只是 s && ...的話，儅s=''，也會被當作'true'並執行後面的判斷
+//   // 而且Boolea(s)能直接返回的話，就能判斷 true && true = true; true && false = false等判斷
+//   let hasFirstCharMatch = Boolean(s) && (p[0] === "." || p[0] === s[0]);
 
-  // 如果p有值，且p[1] == '*'，有兩個選擇
-  // 第一個選擇是：無視或跳過【...?*】前的值（當作'*'是零次，相當於沒有前面的值），讓 p =【?*...】後面的值后，再投入isMatch(s,p) function裏遞歸(Recursive)
-  // 第二個選擇是：'*'是一次，且'*'前的值，也就是p[0] === '.'或 p[0] === s[0]，這樣的話可以當作s[0]成功過關，去除s[0]后剩下的只一樣再投入isMatch(s,p) function裏遞歸
-  // 需要注意的是：第一個選擇執行時，再次遞歸后也一定也執行第一選擇，也可能執行第二選擇，一切看當時候的參數【O1 ?=> O2 ?=> O1 ?=> O1....】
-  // 需要注意的是：儅第一個選擇執行到最後的結果是'true'時，就不會執行第二選擇（沒必要，因爲第一選擇開始的支綫已經跑完了所有s[i]，得出的答案是'true'）
-  if (p[1] === "*") {
-    return (
-      // isMatch(s, p.slice(2)) || (hasFirstCharMatch && isMatch(s.slice(1), p))
-      isMatch(s, p.slice(2)) ||
-      (hasFirstCharMatch && isMatch(s.slice(1), p.slice(1)))
-    );
-  }
+//   // 如果p有值，且p[1] == '*'，有兩個選擇
+//   // 第一個選擇是：無視或跳過【...?*】前的值（當作'*'是零次，相當於沒有前面的值），讓 p =【?*...】後面的值后，再投入isMatch(s,p) function裏遞歸(Recursive)
+//   // 第二個選擇是：'*'是一次，且'*'前的值，也就是p[0] === '.'或 p[0] === s[0]，這樣的話可以當作s[0]成功過關，去除s[0]后剩下的只一樣再投入isMatch(s,p) function裏遞歸
+//   // 需要注意的是：第一個選擇執行時，再次遞歸后也一定也執行第一選擇，也可能執行第二選擇，一切看當時候的參數【O1 ?=> O2 ?=> O1 ?=> O1....】
+//   // 需要注意的是：儅第一個選擇執行到最後的結果是'true'時，就不會執行第二選擇（沒必要，因爲第一選擇開始的支綫已經跑完了所有s[i]，得出的答案是'true'）
+//   if (p[1] === "*") {
+//     return (
+//       // isMatch(s, p.slice(2)) || (hasFirstCharMatch && isMatch(s.slice(1), p))
+//       isMatch(s, p.slice(2)) ||
+//       (hasFirstCharMatch && isMatch(s.slice(1), p.slice(1)))
+//     );
+//   }
 
-  return hasFirstCharMatch ? isMatch(s.slice(1), p.slice(1)) : false;
-};
+//   return hasFirstCharMatch ? isMatch(s.slice(1), p.slice(1)) : false;
+// };
 
-isMatch("", ".a");
-isMatch("aa", "a*");
-isMatch("aa", ".*");
+// isMatch("", ".a");
+// isMatch("aa", "a*");
+// isMatch("aa", ".*");
 
 // #9
 
