@@ -1,19 +1,10 @@
-// #53
-
-// const maxSubArray = (nums) => {
-//   let maxArray = 0;
-
-//   for (let i = 1; i < nums.length; i++) {
-//     nums[i] = Math.max(nums[i - 1] + nums[i], nums[i]);
-//     maxArray = Math.max(maxArray, nums[i]);
-//   }
-//   console.log(maxArray);
-//   return maxArray;
-// };
-
-// maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
-
 // #12
+
+const IntToRoman = (num) => {};
+
+intToRoman(3);
+intToRoman(58);
+intToRoman(1998);
 
 // #11
 
