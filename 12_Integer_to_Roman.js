@@ -16,11 +16,16 @@ const intToRoman = (num) => {
   };
   let result = "";
 
-  letter = "M";
-
-  console.log(letter.repeat(2));
+  Object.entries(data).map(([letter, n]) => {
+    if (num / n >= 1) {
+      result += letter.repeat(Math.floor(num / n));
+      num %= n;
+    }
+  });
+  console.log(result);
+  return result;
 };
 
-// intToRoman(3);
-// intToRoman(58);
+intToRoman(3);
+intToRoman(58);
 intToRoman(1998);

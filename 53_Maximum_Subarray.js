@@ -1,6 +1,6 @@
 const maxSubArray = (nums) => {
   let vals = [...nums];
-  let sum = vals[0];
+  let sum = nums[0];
 
   for (let i = 1; i < vals.length; i++) {
     vals[i] = Math.max(vals[i - 1] + vals[i], vals[i]);
