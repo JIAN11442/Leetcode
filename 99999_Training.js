@@ -1,10 +1,110 @@
+// #15
+
+// #14
+
+// const longestCommonPrefix = (strs) => {
+//   let i = 0;
+//   let prefix = "";
+
+//   if (!strs.length) {
+//     console.log("");
+//     return "";
+//   }
+
+//   while (
+//     strs.every((str) => str !== "") &&
+//     strs.every((str) => str[i] === strs[0][i])
+//   ) {
+//     prefix += strs[0][i];
+//     i++;
+//   }
+//   console.log(prefix);
+//   return prefix;
+// };
+
+// ------------------------------------------------------------
+
+// const longestCommonPrefix = (strs) => {
+//   if (!strs.length) {
+//     console.log("");
+//     return "";
+//   }
+
+//   let prefix = strs.reduce((prev, next) => {
+//     let i = 0;
+//     while (prev[i] && next[i] && prev[i] === next[i]) {
+//       i++;
+//     }
+//     return prev.slice(0, i);
+//   });
+
+//   console.log(prefix);
+//   return prefix;
+// };
+
+// longestCommonPrefix("");
+// longestCommonPrefix([""]);
+// longestCommonPrefix(["", ""]);
+// longestCommonPrefix(["a", "ab"]);
+// longestCommonPrefix(["flower", "flow", "flight"]);
+// longestCommonPrefix(["dog", "racecar", "car"]);
+
+// #13
+
+// const romanToInt = (str) => {
+//   let symbols = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+
+//   let num = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     num +=
+//       symbols[str[i]] < symbols[str[i + 1]]
+//         ? symbols[str[i]] * -1
+//         : symbols[str[i]];
+//   }
+
+//   console.log(str, num);
+// };
+
+// romanToInt("III");
+// romanToInt("LVIII");
+// romanToInt("MCMXCIV");
+
 // #12
 
-const IntToRoman = (num) => {};
+// const IntToRoman = (num) => {
+//   let symbols = {
+//     M: 1000,
+//     CM: 900,
+//     D: 500,
+//     CD: 400,
+//     C: 100,
+//     XC: 90,
+//     L: 50,
+//     XL: 40,
+//     X: 10,
+//     IX: 9,
+//     V: 5,
+//     IV: 4,
+//     I: 1,
+//   };
 
-intToRoman(3);
-intToRoman(58);
-intToRoman(1998);
+//   let romanStr = "";
+//   Object.entries(symbols).map(([letter, n]) => {
+//     if (num / n >= 1) {
+//       romanStr += letter.repeat(Math.floor(num / n));
+//       num %= n;
+//     }
+//   });
+
+//   console.log(romanStr);
+//   return romanStr;
+// };
+
+// IntToRoman(1234);
+// IntToRoman(1998);
+// IntToRoman(3);
+// IntToRoman(58);
+// IntToRoman(1998);
 
 // #11
 
