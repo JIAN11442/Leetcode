@@ -1,37 +1,32 @@
-// const threeSumClosest = (nums, target) => {
-//   let result = 0;
-
-//   //   if (nums.length < 3) {
-//   //     console.log(result);
-//   //     return result;
-//   //   }
-//   //   for (let i = 0; i < nums.length - 2; i++) {
-//   //     let j = i + 1;
-//   //     let k = nums.length - 1;
-
-//   //   }
-
-// };
-
-var threeSumClosest = function (nums, target) {
-  nums.sort((a, b) => a - b);
+const threeSumClosest = (nums, target) => {
   let closest = Infinity;
-  for (let i = 0; i < nums.length - 2; i++) {
-    let left = i + 1;
-    right = nums.length - 1;
-    while (left < right) {
-      let localSum = nums[i] + nums[left] + nums[right];
-      if (Math.abs(localSum - target) < Math.abs(closest - target))
-        closest = localSum;
-      if (localSum > target) right--;
-      else left++;
-      console.log("Before", i, left, right, localSum, closest);
 
-      console.log(`-------`);
+  if (nums.length < 3) {
+    console.log(0);
+    return 0;
+  }
+
+  nums.sort((a, b) => a - b);
+
+  for (let i = 0; i < nums.length - 2; i++) {
+    let j = i + 1;
+    let k = nums.length - 1;
+
+    while (j < k) {
+      let sum = nums[i] + nums[j] + nums[k];
+      closest =
+        Math.abs(sum - target) < Math.abs(closest - target) ? sum : closest;
+      if (sum > target) {
+        k--;
+      } else {
+        j++;
+      }
     }
   }
+
+  console.log(closest);
   return closest;
 };
 
 threeSumClosest([-1, 2, 1, -4], 1);
-// threeSumClosest([0, 0, 0], 1);
+threeSumClosest([0, 0, 0], 1);
