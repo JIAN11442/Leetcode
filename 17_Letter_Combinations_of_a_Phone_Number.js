@@ -19,7 +19,9 @@ const letterCombinations = (digits) => {
       for (const char of chars) {
         slate.push(char);
         dfs(i + 1, digits, slate);
+        console.log("Before pop: ", i, slate);
         slate.pop();
+        console.log("After pop: ", i, slate);
       }
     }
   };
@@ -30,11 +32,11 @@ const letterCombinations = (digits) => {
   }
 
   dfs(0, digits, []);
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
-letterCombinations("");
-letterCombinations("2");
+// letterCombinations("");
+// letterCombinations("2");
 letterCombinations("23");
-letterCombinations("2345");
+// letterCombinations("2345");
