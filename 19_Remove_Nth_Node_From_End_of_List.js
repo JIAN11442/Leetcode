@@ -15,10 +15,11 @@ const removeNthFromEnd = (head, n) => {
     fast = fast.next;
   }
 
-  //   if (!fast) {
-  //     console.log(head.next);
-  //     return head.next;
-  //   }
+  // 如果fast跑完n位後等於null後，也沒有必要跑slow了，直接return fast本身或是list.next
+  if (!fast) {
+    console.log(list.next);
+    return list.next;
+  }
 
   //   接著再讓fast和slow同時跑，知道fast到list盡頭
   while (fast.next !== null) {
@@ -40,6 +41,6 @@ const head_1 = new ListNode(
 const head_2 = new ListNode(1);
 const head_3 = new ListNode(1, new ListNode(2));
 
-removeNthFromEnd(head_1, 5);
-// removeNthFromEnd(head_2, 1);
-// removeNthFromEnd(head_3, 1);
+removeNthFromEnd(head_1, 2);
+removeNthFromEnd(head_2, 1);
+removeNthFromEnd(head_3, 1);
