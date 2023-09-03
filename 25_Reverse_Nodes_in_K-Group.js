@@ -32,7 +32,7 @@ const reverseKGroup = (head, k) => {
   return recurs(head);
 };
 
-reverseGroup(
+reverseKGroup(
   new ListNode(
     1,
     new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))
