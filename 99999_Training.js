@@ -1,3 +1,71 @@
+// #27
+
+// const removeElement = (nums, val) => {
+//   // Solution 1
+//   // 不需要真的刪掉nums中與val相等的值,
+//   // 只要把與val不相等的nums[i]依次按index排列即可，並計算不相等的次數有幾次即可
+
+//   let count = 0;
+
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] !== val) {
+//       nums[count] = nums[i];
+//       count++;
+//     }
+//   }
+//   return count;
+// };
+
+// const removeElement = (nums, val) => {
+//   // Solution 2
+//   // 可以真的拿掉與val相等的nums[i]
+
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums.indexOf(val) >= 0) {
+//       if (nums[i] === val) {
+//         nums.splice(i, 1);
+//         i--;
+//       }
+//     } else {
+//       break;
+//     }
+//   }
+
+//   return nums.length;
+// };
+
+// removeElement([3, 2, 2, 3], 3);
+// removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2);
+
+// #26
+
+// // Solution 1:直接拿掉一樣的
+// const removeDuplicates = (nums) => {
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] === nums[i + 1]) {
+//       nums.splice(i, 1);
+//       i--;
+//     }
+//   }
+
+//   return nums.length;
+// };
+
+// // Solution 2: 排列
+// const removeDuplicates = (nums) => {
+//   let j = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[j] !== nums[i]) {
+//       nums[++j] = nums[i];
+//     }
+//   }
+//   return ++j;
+// };
+
+// removeDuplicates([1, 1, 2]);
+// removeDuplicates([1, 1, 1, 1]);
+// removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);
+
 // #15
 
 // #14

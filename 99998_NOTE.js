@@ -468,3 +468,6 @@
 // twoSum([3, 3], 6);
 // twoSum([3, 2, 4], 6);
 // twoSum([2, 7, 11, 15], 9);
+
+let a = Math.pow(2, 30);
+console.log(a << 1);
