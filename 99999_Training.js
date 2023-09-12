@@ -1,3 +1,67 @@
+// #30
+
+// const findSubstring = (s, words) => {
+//   let l = words[0].length;
+//   let count = {};
+//   let res = [];
+
+//   for (let w of words) {
+//     count[w] ? (count[w] = ++count[w]) : (count[w] = 1);
+//   }
+
+//   const csl = (...args) => {
+//     for (let i = 0; i < args.length; i++) {
+//       console.log(`Arg ${i + 1}:`, args[i]);
+//     }
+//     console.log("-------------------");
+//   };
+
+//   const recus = (i, j, l, s, count) => {
+//     let stack = {};
+//     let boolean = false;
+//     while (!boolean) {
+//       let str = s.substring(j, j + l);
+//       //   csl(i, j, str, stack, count, boolean);
+
+//       if (words.indexOf(str) >= 0) {
+//         if (stack[str]) {
+//           if (stack[str] < count[str]) {
+//             stack[str] = ++stack[str];
+//             j += l;
+//           } else {
+//             i += l;
+//             j = i;
+//             break;
+//           }
+//         } else {
+//           stack[str] = 1;
+//           j += l;
+
+//           if (boolean) {
+//             break;
+//           }
+//         }
+//       } else {
+//         i += l;
+//         j = i;
+//         break;
+//       }
+//       boolean = Object.keys(count).every((item) => count[item] === stack[item]);
+//       csl(i, j, str, stack, count, boolean, res);
+//     }
+//     if (boolean) res.push(i);
+
+//     if (j < s.length) recus(i, j, l, s, count);
+//   };
+
+//   for (let i = 0; i < l; i++) {
+//     let j = i;
+//     recus(i, j, l, s, count);
+//   }
+//   console.log("res: ", res);
+//   return res;
+// };
+
 // #27
 
 // const removeElement = (nums, val) => {
