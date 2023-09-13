@@ -1,19 +1,16 @@
-const maxProfix = (prices) => {
-  let mpr = 0;
+const maxProfit = (prices) => {
   let mpf = 0;
-  let res = 0;
 
-  for (let i = prices.length - 1; i >= 0; i--) {
-    mpr = Math.max(mpr, prices[i]);
-    mpf += mpr - prices[i];
-    if (mpr - prices[i] > 0) {
-      mpr = 0;
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i - 1] < prices[i]) {
+      mpf += prices[i] - prices[i - 1];
     }
   }
 
-  console.log(prices, mpf);
+  console.log(mpf);
+  return mpf;
 };
 
-maxProfix([7, 1, 5, 3, 6, 4]);
-maxProfix([1, 2, 3, 4, 5]);
-maxProfix([7, 6, 4, 3, 1]);
+maxProfit([7, 1, 5, 3, 6, 4]);
+maxProfit([1, 2, 3, 4, 5]);
+maxProfit([7, 6, 4, 3, 1]);
